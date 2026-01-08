@@ -1,0 +1,62 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@model EMS.Web.Pages.Employees.DetailsModel
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h1>Employee Details</h1>
+
+@if (Model.Employee != null)
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">Number</dt>
+            <dd class="col-sm-9">@Model.Employee.Number</dd>
+
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.Employee.Name</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Employee.Email</dd>
+
+            <dt class="col-sm-3">Department</dt>
+            <dd class="col-sm-9">@(Model.Employee.Department?.Name ?? "N/A")</dd>
+
+            <dt class="col-sm-3">Job Title</dt>
+            <dd class="col-sm-9">@Model.Employee.JobTitle</dd>
+
+            <dt class="col-sm-3">Salary</dt>
+            <dd class="col-sm-9">@Model.Employee.Salary.ToString("C")</dd>
+
+            <dt class="col-sm-3">Commission</dt>
+            <dd class="col-sm-9">@Model.Employee.Commission.ToString("C")</dd>
+
+            <dt class="col-sm-3">Date of Birth</dt>
+            <dd class="col-sm-9">@Model.Employee.DateOfBirth.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Date of Joining</dt>
+            <dd class="col-sm-9">@Model.Employee.DateOfJoining.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Manager</dt>
+            <dd class="col-sm-9">@(Model.Employee.Manager?.Name ?? "No Manager")</dd>
+
+            <dt class="col-sm-3">Phone</dt>
+            <dd class="col-sm-9">@Model.Employee.Phone</dd>
+
+            <dt class="col-sm-3">Gender</dt>
+            <dd class="col-sm-9">@Model.Employee.Gender</dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="Edit" asp-route-id="@Model.Employee.Number" class="btn btn-warning">Edit</a>
+        <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+}
+else
+{
+    <p>Employee not found.</p>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+}
