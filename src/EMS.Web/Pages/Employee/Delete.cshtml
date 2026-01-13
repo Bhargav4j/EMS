@@ -1,0 +1,34 @@
+@page
+@model EMS.Web.Pages.Employee.DeleteModel
+@{
+    ViewData["Title"] = "Delete Employee";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete this employee?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Number</dt>
+        <dd class="col-sm-9">@Model.Employee?.Number</dd>
+
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">@Model.Employee?.Name</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Employee?.Email</dd>
+
+        <dt class="col-sm-3">Department</dt>
+        <dd class="col-sm-9">@Model.Employee?.DepartmentName</dd>
+
+        <dt class="col-sm-3">Job Title</dt>
+        <dd class="col-sm-9">@Model.Employee?.JobTitle</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Employee.Number" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
