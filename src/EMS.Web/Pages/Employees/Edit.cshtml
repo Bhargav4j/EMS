@@ -1,0 +1,86 @@
+@page
+@model EMS.Web.Pages.Employees.EditModel
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <input type="hidden" asp-for="Input.Id" />
+            <div class="mb-3">
+                <label asp-for="Input.Name" class="form-label"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Email" class="form-label"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.DepartmentId" class="form-label"></label>
+                <select asp-for="Input.DepartmentId" class="form-select" asp-items="Model.Departments"></select>
+                <span asp-validation-for="Input.DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.JobTitle" class="form-label"></label>
+                <input asp-for="Input.JobTitle" class="form-control" />
+                <span asp-validation-for="Input.JobTitle" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Salary" class="form-label"></label>
+                <input asp-for="Input.Salary" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Input.Salary" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Commission" class="form-label"></label>
+                <input asp-for="Input.Commission" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Input.Commission" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.DateOfBirth" class="form-label"></label>
+                <input asp-for="Input.DateOfBirth" class="form-control" type="date" />
+                <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.DateOfJoining" class="form-label"></label>
+                <input asp-for="Input.DateOfJoining" class="form-control" type="date" />
+                <span asp-validation-for="Input.DateOfJoining" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Phone" class="form-label"></label>
+                <input asp-for="Input.Phone" class="form-control" />
+                <span asp-validation-for="Input.Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Gender" class="form-label"></label>
+                <select asp-for="Input.Gender" class="form-select">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.ReportingTo" class="form-label"></label>
+                <select asp-for="Input.ReportingTo" class="form-select" asp-items="Model.Managers">
+                    <option value="">No Manager</option>
+                </select>
+                <span asp-validation-for="Input.ReportingTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

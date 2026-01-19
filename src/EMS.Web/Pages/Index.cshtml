@@ -1,0 +1,14 @@
+@page
+@model EMS.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Employee Management System</h1>
+    <p>Manage your employees and departments efficiently.</p>
+    <p>
+        <a asp-page="/Employees/Index" class="btn btn-primary">View Employees</a>
+        <a asp-page="/Account/Login" class="btn btn-secondary">Login</a>
+    </p>
+</div>
